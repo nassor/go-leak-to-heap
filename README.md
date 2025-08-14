@@ -24,6 +24,14 @@ This repository contains several files demonstrating different aspects of Go mem
 - **`benchmark_test.go`** - Benchmarks heap-escaping functions to show allocation costs
 - **`stack_benchmark_test.go`** - Benchmarks stack-optimized functions and comparisons
 
+### **How to run**
+
+To run the benchmarks, use the following command:
+
+```bash
+make
+```
+
 ### **Goals of Each Benchmark**
 
 | Benchmark Category | Purpose | What It Demonstrates |
@@ -239,11 +247,11 @@ go test -bench=BenchmarkComparison -benchmem
 ```bash
 # Memory profiling
 go test -bench=. -memprofile=mem.prof
-go tool pprof mem.prof
+go tool pprof -http=:8080 mem.prof
 
 # CPU profiling  
 go test -bench=. -cpuprofile=cpu.prof
-go tool pprof cpu.prof
+go tool pprof -http=:8080 cpu.prof
 ```
 
 ### 📊 **Quick Reference: Stack vs Heap Indicators**
@@ -281,18 +289,5 @@ go tool pprof cpu.prof
 - ❌ Grow slices without pre-allocation
 - ❌ Use maps for small, static data
 - ❌ Optimize without measuring
-
-### 🧪 **Running the Examples**
-
-```bash
-# See the concepts in action
-go run .
-
-# Compare performance
-go test -bench=. -benchmem
-
-# Verify optimizations
-go build -gcflags="-m" .
-```
 
 **Remember**: Premature optimization is the root of all evil. Always profile first, then optimize the actual bottlenecks with these techniques!

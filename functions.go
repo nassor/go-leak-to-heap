@@ -1,4 +1,4 @@
-package main
+package heapescapeanalysis
 
 // Case 1: Returning pointer to local variable
 //

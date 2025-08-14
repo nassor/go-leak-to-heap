@@ -1,3 +1,3 @@
-module github.com/nassor/go-leak-to-heap
+module github.com/nassor/go-heap-escape-analysis
 
-go 1.24.6
+go 1.25.0
